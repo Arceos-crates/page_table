@@ -1,74 +1,15 @@
-[workspace]
-resolver = "2"
+[package]
+name = "page_table"
+version = "0.1.0"
+edition = "2021"
+authors = ["Yuekai Jia <equation618@gmail.com>"]
+description = "Generic page table structures for various hardware architectures"
+license = "GPL-3.0-or-later OR Apache-2.0"
+homepage = "https://github.com/rcore-os/arceos"
+repository = "https://github.com/rcore-os/arceos/tree/main/crates/page_table"
+documentation = "https://rcore-os.github.io/arceos/page_table/index.html"
 
-members = [
-    "crates/arm_gic",
-    "crates/arm_pl011",
-    "crates/dw_apb_uart",
-    "crates/axfs_devfs",
-    "crates/axfs_ramfs",
-    "crates/capability",
-    "crates/flatten_objects",
-    "crates/handler_table",
-    "crates/linked_list",
-    "crates/ratio",
-    "crates/scheduler",
-    "crates/timer_list",
-    "crates/tuple_for_each",
-    "modules/axconfig",
-    "modules/axdisplay",
-    "modules/axdriver",
-    "modules/axfs",
-    "modules/axhal",
-    "modules/axnet",
-    "modules/axruntime",
-    "modules/axsync",
-    "modules/axtask",
-    "modules/axprocess",
-    "modules/axsignal",
-
-    "api/axfeat",
-    "api/arceos_api",
-    
-    "api/arceos_posix_api",
-
-    "ulib/axstd",
-    "ulib/axlibc",
-    "ulib/axstarry/syscall_mem",
-    "ulib/axstarry/syscall_fs",
-    "ulib/axstarry/syscall_net",
-    "ulib/axstarry/syscall_utils",
-    "ulib/axstarry/syscall_task",
-    "ulib/axstarry/syscall_entry",
-    "apps/display",
-    "apps/exception",
-    "apps/helloworld",
-    "apps/memtest",
-    "apps/fs/shell",
-    "apps/net/echoserver",
-    "apps/net/httpclient",
-    "apps/net/httpserver",
-    "apps/net/udpserver",
-    "apps/net/bwbench",
-    "apps/task/parallel",
-    "apps/task/sleep",
-    "apps/task/yield",
-    "apps/task/priority",
-    "apps/task/tls",
-    "apps/oscomp",
-    "apps/ostrain/fileopen",
-    "apps/ostrain/fileread",
-    "apps/ostrain/filewrite",
-    "apps/ostrain/taskyield",
-    "apps/ostrain/task_single_yield",
-    "apps/ostrain/danger_access"
-]
-
-[profile.release]
-lto = true
-
-[patch.crates-io]
-crate_interface = { git = "https://github.com/Arceos-crates/crate_interface.git" }
-
-[patch."https://github.com/rcore-os/smoltcp.git"]
-smoltcp = { git = "https://github.com/c0per/smoltcp", branch = "starryos" }
+[dependencies]
+log = "0.4"
+memory_addr = { git = "https://github.com/Arceos-crates/memory_addr.git"}
+page_table_entry = { git = "https://github.com/Arceos-crates/page_table_entry.git"  }
