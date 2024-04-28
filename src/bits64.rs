@@ -121,7 +121,7 @@ impl<M: PagingMetaData, PTE: GenericPTE, IF: PagingIf> PageTable64<M, PTE, IF> {
         if !entry.is_unused() {
             return Err(PagingError::AlreadyMapped);
         }
-        *entry = GenericPTE::new_fault_page(flags, page_size.is_huge());
+        *entry = GenericPTE::new_fault_page(page_size.is_huge());
         Ok(())
     }
 
